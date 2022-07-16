@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block sub_content %}
+    {% if blogs %}
+        {% for blog in blogs %}
+        <h3> <a href="/blogs/{{ blog['blog_id'] }}">{{blog['title']}} </a> </h3>
+      <h5>Written by {{blog['author']}}</h5>
+
+      <hr>
+        <tr>
+            <td style="padding:0 15px;"> <h3> <a href="/blogs/{{ blog['blog_id'] }}">{{blogs['title']}} </a> </h3></td>
+            <td style="padding:0 15px;"> <a href="/edit-blogs/{{ blog['blog_id'] }}" class="btn btn-primary">Edit</a></td>
+            <td style="padding:0 15px;"> <a href="/delete-blog/{{ blog['blog_id'] }}" class="btn btn-danger">Delete</a></td>
+          </tr>
+        {% endfor %}
+    {% else %}
+        <h3>
+            No Blogs have been written yet
+        </h3>
+    {% endif %}
+{% endblock %}
